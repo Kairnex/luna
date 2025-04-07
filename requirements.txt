@@ -1,0 +1,9 @@
+openai
+whisper
+numpy
+PySide6
+sounddevice
+soundfile
+matplotlib
+scikit-learn
+elevenlabs
