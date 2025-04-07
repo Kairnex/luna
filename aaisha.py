@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 
 # Set your API keys
 openai.api_key = "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"
-EL_API_KEY = "your-elevenlabs-api-key"
+EL_API_KEY = "sk_294c023c029fb4fd1d46282a71ec9fd0a1c758f9194cc09e"
 
 MEMORY_FILE = "luna_memory.json"
 MOOD_LOG_FILE = "luna_mood_log.json"
