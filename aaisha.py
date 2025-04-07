@@ -11,7 +11,7 @@ from datetime import datetime
 from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QTextEdit, QPushButton, QLabel
 from PySide6.QtGui import QPixmap, QColor
 from PySide6.QtCore import Qt
-from elevenlabs import generate, save
+from elevenlabs.client import ElevenLabs
 from sklearn.metrics.pairwise import cosine_similarity
 import matplotlib.pyplot as plt
 
@@ -52,6 +52,7 @@ class AIGirlfriendApp(QWidget):
 
         self.memory = self.load_json(MEMORY_FILE)
         self.mood_log = self.load_json(MOOD_LOG_FILE)
+        self.el_client = ElevenLabs(api_key=EL_API_KEY)
 
     def load_json(self, filepath):
         if os.path.exists(filepath):
@@ -106,8 +107,9 @@ class AIGirlfriendApp(QWidget):
 
         self.save_memory(user_text)
 
-        audio = generate(api_key=EL_API_KEY, voice="Luna", text=luna_reply)
-        save(audio, "luna_reply.mp3")
+        audio = self.el_client.generate(text=luna_reply, voice="Luna")
+        with open("luna_reply.mp3", "wb") as f:
+            f.write(audio)
         os.system("mpg123 luna_reply.mp3")
 
     def record_audio(self, filename, duration, fs):
