@@ -16,7 +16,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import matplotlib.pyplot as plt
 
 # Set your API keys
-openai.api_key = "your-openai-api-key"
+openai.api_key = "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"
 EL_API_KEY = "your-elevenlabs-api-key"
 
 MEMORY_FILE = "luna_memory.json"
